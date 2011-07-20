@@ -49,3 +49,15 @@
 [AsseticBundle]
     git=http://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
+
+[FOSUserBundle]
+    git=git://github.com/FriendsOfSymfony/FOSUserBundle.git
+    target=bundles/FOS/UserBundle
+
+[GalaxyManagerBundle]
+    git=https://github.com/apathyboy/AnhGalaxyManagerBundle.git
+    target=bundles/Anh/GalaxyManagerBundle
+
+[SwgManagerBundle]
+    git=https://github.com/apathyboy/AnhSwgManagerBundle.git
+    target=bundles/Anh/SwgManagerBundle
