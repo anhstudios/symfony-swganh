@@ -1,5 +1,8 @@
-/vendors
-*/logs/*
-*/cache/*
-web/uploads/*
-web/bundles/*
+web/bundles/
+app/bootstrap*
+app/cache/*
+app/logs/*
+app/config/*.ini
+build/
+vendor/
+.idea

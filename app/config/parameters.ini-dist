@@ -4,7 +4,7 @@
 [parameters]
     database_driver   = pdo_mysql
     database_host     = localhost
-    database_name     = symfony
+    database_name     = swganh
     database_user     = root
     database_password =
 
