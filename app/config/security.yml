@@ -7,32 +7,37 @@ security:
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        in_memory:
-            users:
-                user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        fos_userbundle:
+            id: fos_user.user_manager
 
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        login:
-            pattern:  ^/demo/secured/login$
-            security: false
-
-        secured_area:
-            pattern:    ^/demo/secured/
+        main:
+            pattern:      .*
             form_login:
-                check_path: /demo/secured/login_check
-                login_path: /demo/secured/login
-            logout:
-                path:   /demo/secured/logout
-                target: /demo/
-            #anonymous: ~
-            #http_basic:
-            #    realm: "Secured Demo Area"
-
+                provider:       fos_userbundle
+                login_path:     /login
+                use_forward:    false
+                check_path:     /login_check
+                failure_path:   null
+            logout:       true
+            anonymous:    true
+        
     access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        # URL of FOSUserBundle which need to be available to anonymous users
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        # Secured part of the site
+        # This config requires being logged for the whole site and having the admin role for the admin part.
+        # Change these rules to adapt them to your needs
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/.*, role: ROLE_USER }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Anh\GalaxyManagerBundle\Entity\Account
