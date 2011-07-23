@@ -36,7 +36,7 @@ if (!in_array($command = array_shift($argv), array('install', 'update'))) {
  * Check wether this project is based on the Standard Edition that was
  * shipped with vendors or not.
  */
-if (!is_dir($vendorDir.'/symfony/.git') && !in_array('--reinstall', $argv)) {
+if (is_dir($vendorDir.'/symfony') && !is_dir($vendorDir.'/symfony/.git') && !in_array('--reinstall', $argv)) {
     exit(<<<EOF
 Your project seems to be based on a Standard Edition that includes vendors.
 
@@ -50,6 +50,13 @@ EOF
 if (!is_dir($vendorDir)) {
     mkdir($vendorDir, 0777, true);
 }
+
+// Copy dist files.
+if (!is_file($rootDir . "/app/config/parameters.ini"))
+	copy($rootDir . "/app/config/parameters.ini-dist", $rootDir . "/app/config/parameters.ini");
+
+if (!is_file($rootDir . "/deps"))
+	copy($rootDir . "/deps-dist", $rootDir . "/deps");
 
 // versions
 $versions = array();
@@ -65,7 +72,12 @@ if ('install' === $command && file_exists($rootDir.'/deps.lock')) {
 
 $newversions = array();
 $deps = parse_ini_file($rootDir.'/deps', true, INI_SCANNER_RAW);
+if (false === $deps) {
+    exit("The deps file is not valid ini syntax. Perhaps missing a trailing newline?\n");
+}
 foreach ($deps as $name => $dep) {
+    $dep = array_map('trim', $dep);
+
     // revision
     if (isset($versions[$name])) {
         $rev = $versions[$name];

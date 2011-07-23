@@ -2,6 +2,7 @@ web/bundles/
 app/bootstrap*
 app/cache/*
 app/logs/*
+app/*.cache
 app/config/*.ini
 build/
 vendor/
