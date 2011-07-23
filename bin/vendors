@@ -51,6 +51,13 @@ if (!is_dir($vendorDir)) {
     mkdir($vendorDir, 0777, true);
 }
 
+// Copy dist files.
+if (!is_file($rootDir . "/app/config/parameters.ini"))
+	copy($rootDir . "/app/config/parameters.ini-dist", $rootDir . "/app/config/parameters.ini");
+
+if (!is_file($rootDir . "/deps"))
+	copy($rootDir . "/deps-dist", $rootDir . "/deps");
+
 // versions
 $versions = array();
 if ('install' === $command && file_exists($rootDir.'/deps.lock')) {
