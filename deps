@@ -55,9 +55,9 @@
     target=bundles/FOS/UserBundle
 
 [GalaxyManagerBundle]
-    git=https://github.com/apathyboy/AnhGalaxyManagerBundle.git
+    git=http://github.com/anhstudios/AnhGalaxyManagerBundle.git
     target=bundles/Anh/GalaxyManagerBundle
 
 [SwgManagerBundle]
-    git=https://github.com/apathyboy/AnhSwgManagerBundle.git
+    git=http://github.com/anhstudios/AnhSwgManagerBundle.git
     target=bundles/Anh/SwgManagerBundle
