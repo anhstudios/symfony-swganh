@@ -70,7 +70,7 @@ Congratulations! You're now ready to use Symfony. If you've unzipped Symfony
 in the web root of your computer, then you should be able to access the
 web version of the Symfony requirements check via:
 
-    http://localhost/Symfony/web/config.php
+    http://localhost/symfony-swganh/web/config.php
 
 If everything looks good, click the "Bypass configuration and go to the Welcome page"
 link to load up your first Symfony page.
