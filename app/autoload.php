@@ -11,9 +11,11 @@ $loader->registerNamespaces(array(
     'Doctrine\\Common' => __DIR__.'/../vendor/doctrine-common/lib',
     'Doctrine\\DBAL'   => __DIR__.'/../vendor/doctrine-dbal/lib',
     'Doctrine'         => __DIR__.'/../vendor/doctrine/lib',
+    'Doctrine\\Common\\DataFixtures' => __DIR__.'/../vendor/doctrine-fixtures/lib',
+    'Doctrine\\Common' => __DIR__.'/../vendor/doctrine-common/lib',
     'Monolog'          => __DIR__.'/../vendor/monolog/src',
     'Assetic'          => __DIR__.'/../vendor/assetic/src',
-    'Metadata'         => __DIR__.'/../vendor/metadata/src',   
+    'Metadata'         => __DIR__.'/../vendor/metadata/src',
     'FOS'              => __DIR__.'/../vendor/bundles',
     'Anh'              => __DIR__.'/../vendor/bundles',
 ));
